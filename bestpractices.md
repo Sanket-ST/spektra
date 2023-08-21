@@ -42,7 +42,7 @@ below are some of the cloudlabs parameter that can be used.
 
 ![](./images/bst2.png)
 
-## 3. How to define the Parmeter and Variables.
+## 3. How to define the Parmeter and Variables
 
  **Parmeters**: In the parameters section of the template, you specify which values you can input while deploying the resources.
 
@@ -57,6 +57,47 @@ below are some of the cloudlabs parameter that can be used.
  **Variables** - In the variables section, you construct values that can be used throughout your template. You don't need to define variables, but they often simplify your template by reducing complex expressions.
 
  ![](./images/bst4.png)
+
+## 4. TEMPLATE PERMISSIONS
+
+1. **Permission/Role Type:** Here we have three types of Permissions –
+
+   * **Azure**:
+     * **Azure Built-in Role**: Roles that are available in Azure itself.
+     * **Azure Custom Role**: If the Azure built-in roles don't meet the specific needs of your lab, you can create your own custom roles.
+     * **Custom ARM Policy**: Here, you can restrict the resources/services by specifying the custom permission URL based on your needs.
+   * **AWS**:
+     * **IAM Built-in Policy**: It provides an option to attach AWS Managed permissions to the users.
+     * **IAM Custom Policy**: If we want to provide restricted access to AWS services to users, then we can select this option.
+     * **IAM Instructor Access**: This option can be used to provide access to instructors.
+   * **GCP**:
+     * **Basic Role**: Basic roles are highly permissive roles that existed prior to the introduction of IAM. You can use basic roles to grant principals broad access to Google Cloud resources.
+     * **Custom Role**: If we want to provide restricted access to GCP services to users, then we can select this option.
+    
+   ***NOTE***: While developing a new lab (dev - phase), you can grant Owner (Azure/GCP) or Administrator access (AWS) for the user, so that there are no conflicts/errors while deploying any kind of resources and once the lab development is completed, you can build custom policies based on the lab requirements so that the users cannot deploy anything besides the lab guide.
+
+2. **Profile Type:**
+
+   * **Attendee**: Select this option if you want to assign permission to a User.
+   * **Instructor (Not Applicable for GCP)**: Select this option if you want to assign permission to an Instructor/Mentor/Proctor.
+   * **Group Member**: Select this option if you want to assign permission to a user who is an Azure Active Directory Group Member.
+
+## 5. VM CONFIGURATION – ONLY APPLICABLE FOR AZURE:
+
+Under **Add VM Configuration**, add following values:
+
+1. **Name**: In this column, you must enter the exact name of your VM that you supplied in your ARM Template.
+
+2. **Type**: Here you have to choose the Type of your virtual machine. There are two options available - RDP and SSH, so choose one based on the type of your VM.
+
+3. **Server DNS Name**: From your ARM Template, pick up the output parameter that has the VM DNS name stored in it and paste it into this field.
+   
+4. **Server User Name**: From your ARM Template, pick up the output parameter that has the VM Username stored in it and paste it into this field.
+
+5. **Server Password**: From your ARM Template, pick up the output parameter that has the VM Password stored in it and paste it into this field.
+   
+6. At last, click on **SUBMIT** to save the configurations.
+
 
 
 
